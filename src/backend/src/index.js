@@ -33,7 +33,7 @@ emitter.on('CREATE_ROOM', ({ connection, payload }) => {
   const id = uuid7();
   const newRoom = {
     roomName: payload.roomName,
-    creatorId: payload.cteatorId,
+    creatorId: payload.creatorId,
     messages: [],
     users: [connection.userName],
     id,
@@ -63,7 +63,7 @@ emitter.on('CREATE_ROOM', ({ connection, payload }) => {
 emitter.on('JOIN_ROOM', ({ connection, payload }) => {
   const room = rooms.find((chat) => chat.id === payload.roomId);
 
-  if (room.messages.includes(connection.userName)) {
+  if (!room || room.users.includes(connection.userName)) {
     return;
   }
 
@@ -85,6 +85,11 @@ emitter.on('JOIN_ROOM', ({ connection, payload }) => {
 
 emitter.on('SEND_MESSAGE', ({ connection, payload }) => {
   const room = rooms.find((chat) => chat.id === payload.roomId);
+
+  if (!room) {
+    return;
+  }
+
   const message = {
     id: uuid7(),
     text: payload.text,

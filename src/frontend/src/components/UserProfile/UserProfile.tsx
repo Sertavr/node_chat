@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useContext } from 'react';
 import style from './UserProfile.module.scss';
 import { UserContext } from '../../context/UserContext';
@@ -12,7 +11,7 @@ export const UserProfile = () => {
         <div className={style['userProfile__avatar']}>
           {userName?.at(0)?.toUpperCase()}
         </div>
-        <span className={style['userProfile__name']}>{userName}</span>
+        <span>{userName}</span>
       </div>
     </div>
   );

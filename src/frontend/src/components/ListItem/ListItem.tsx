@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 import type React from 'react';
 import { Icon } from '../Icon/Icon';
 import style from './ListItem.module.scss';
@@ -35,7 +34,6 @@ export const ListItem: React.FC<Props> = ({
 
   useEffect(() => {
     setEditRoomId(null);
-    console.log(123)
   }, [currentRoom]);
 
   const isCurrentRoom = room.id === currentRoom?.id;
@@ -49,8 +47,8 @@ export const ListItem: React.FC<Props> = ({
   const isOpenEdit = openedEditRoomId === room.id;
 
   const toggleMenuEdit = () => {
-    setEditRoomId(isOpenEdit ? null : room.id)
-  }
+    setEditRoomId(isOpenEdit ? null : room.id);
+  };
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
@@ -105,7 +103,7 @@ export const ListItem: React.FC<Props> = ({
 
     const message = socketService.createSystemMessage('DELETE_ROOM', {
       userId,
-      roomId: currentRoom?.id,
+      roomId: room.id,
     });
 
     socket.send(message);
@@ -173,6 +171,7 @@ export const ListItem: React.FC<Props> = ({
               error={error}
               closeModal={handleClose}
               handleCreate={handleRename}
+              title="Change room name"
             />
           </Modal>
 
@@ -190,7 +189,7 @@ export const ListItem: React.FC<Props> = ({
           <Modal isOpen={isModalDel} closeModal={handleCloseDelModal}>
             <DeleteRoom
               closeModal={handleCloseDelModal}
-              handleDleteRoom={handleDeletRoom}
+              handleDeleteRoom={handleDeletRoom}
             />
           </Modal>
         </ul>

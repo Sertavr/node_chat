@@ -1,11 +1,10 @@
-/* eslint-disable */
 export type SocketMessage = {
   SET_USERNAME: {
     userName: string;
   };
   CREATE_ROOM: {
     roomName: string;
-    cteatorId: string;
+    creatorId: string;
   };
   JOIN_ROOM: {
     roomId: string;

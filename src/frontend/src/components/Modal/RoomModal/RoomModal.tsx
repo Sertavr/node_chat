@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 import type React from 'react';
 import { Icon } from '../../Icon/Icon';
 import style from './RoomModal.module.scss';
@@ -8,6 +7,7 @@ type Props = {
   error: string;
   placeholder: string;
   label: string;
+  title: string;
   closeModal: () => void;
   handleChange: (
     event: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
@@ -22,12 +22,13 @@ export const RoomModal: React.FC<Props> = ({
   handleChange,
   handleCreate,
   placeholder,
-  label
+  label,
+  title
 }) => {
   return (
     <div className={style.roomModal}>
       <div className={style.roomModal__top}>
-        <h2 className={style.roomModal__title}>Create new room</h2>
+        <h2 className={style.roomModal__title}>{title}</h2>
         <button className={style.roomModal__iconContainer} onClick={closeModal}>
           <Icon className={style.roomModal__icon} nameIcon="close" />
         </button>

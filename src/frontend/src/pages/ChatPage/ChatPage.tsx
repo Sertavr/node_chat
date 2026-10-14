@@ -41,7 +41,7 @@ export const ChatPage = () => {
       );
     }
 
-    const hendleSocetMessage = (event: MessageEvent) => {
+    const hendleSocketMessage = (event: MessageEvent) => {
       const message = JSON.parse(event.data);
       switch (message.type) {
         case 'ROOMS_UPDATED':
@@ -52,10 +52,10 @@ export const ChatPage = () => {
       }
     };
 
-    socket?.addEventListener('message', hendleSocetMessage);
+    socket?.addEventListener('message', hendleSocketMessage);
 
     return () => {
-      socket?.removeEventListener('message', hendleSocetMessage);
+      socket?.removeEventListener('message', hendleSocketMessage);
     };
   }, [userName, socket]);
 

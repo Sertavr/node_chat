@@ -11,7 +11,6 @@ export const SocketContext = createContext<SocketContextType>({
   socket: null,
 });
 
-
 type Props = {
   children: React.ReactNode;
 };
@@ -20,7 +19,7 @@ export const SocketProvider: React.FC<Props> = ({ children }) => {
   const [socket] = useState(() => socketService.socketConnect());
 
   return (
-    <SocketContext.Provider value={{socket}}>
+    <SocketContext.Provider value={{ socket }}>
       {children}
     </SocketContext.Provider>
   );

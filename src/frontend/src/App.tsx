@@ -6,7 +6,6 @@ import { ProtectedChat } from './components/ProtectedChat/ProtectedChat';
 function App() {
 
   return (
-    // eslint-disable-next-line
     <main className="main">
       <HashRouter>
         <Routes>

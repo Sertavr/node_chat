@@ -6,17 +6,20 @@ import { RoomModal } from '../Modal/RoomModal/RoomModal';
 import { SocketContext } from '../../context/SocketProvider';
 import { socketService } from '../../services/socetService';
 import { UserContext } from '../../context/UserContext';
-// eslint-disable-next-line
 import type { Room } from '../../type/Room';
 import { ListItem } from '../ListItem/ListItem';
 
 type Props = {
-  rooms: Room[],
-  currentRoom: Room | null,
-  onSetCurrentRoomId: (id: string) => void,
-}
+  rooms: Room[];
+  currentRoom: Room | null;
+  onSetCurrentRoomId: (id: string) => void;
+};
 
-export const RoomList: React.FC<Props> = ({rooms, currentRoom, onSetCurrentRoomId}) => {
+export const RoomList: React.FC<Props> = ({
+  rooms,
+  currentRoom,
+  onSetCurrentRoomId,
+}) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [nameNewRoom, setNameNewRoom] = useState('');
   const [openedEditRoomId, setOpenedEditRoomId] = useState<string | null>(null);
@@ -30,7 +33,7 @@ export const RoomList: React.FC<Props> = ({rooms, currentRoom, onSetCurrentRoomI
     setNameNewRoom('');
   };
 
-  const setEditRoomId = (id: string) => setOpenedEditRoomId(id);
+  const setEditRoomId = (id: string | null) => setOpenedEditRoomId(id);
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
@@ -52,7 +55,10 @@ export const RoomList: React.FC<Props> = ({rooms, currentRoom, onSetCurrentRoomI
       return;
     }
 
-    const message = socketService.createSystemMessage('CREATE_ROOM', {roomName: normalizedName, cteatorId: userId});
+    const message = socketService.createSystemMessage('CREATE_ROOM', {
+      roomName: normalizedName,
+      creatorId: userId,
+    });
 
     if (!socket) {
       return;
@@ -81,20 +87,28 @@ export const RoomList: React.FC<Props> = ({rooms, currentRoom, onSetCurrentRoomI
 
           <Modal isOpen={isOpenModal} closeModal={handleClose}>
             <RoomModal
-              label='Room name'
-              placeholder='Enter room name'
+              label="Room name"
+              placeholder="Enter room name"
               handleChange={handleChange}
               handleCreate={handleCreateRoom}
               inputValue={nameNewRoom}
               closeModal={handleClose}
               error={error}
+              title="Create new room"
             />
           </Modal>
         </div>
 
         <ul className={style.roomList__list}>
-          {rooms?.map(room => (
-            <ListItem room={room} key={room.id} currentRoom={currentRoom} onSetCurrentRoomId={onSetCurrentRoomId} openedEditRoomId={openedEditRoomId} setEditRoomId={setEditRoomId} />
+          {rooms?.map((room) => (
+            <ListItem
+              room={room}
+              key={room.id}
+              currentRoom={currentRoom}
+              onSetCurrentRoomId={onSetCurrentRoomId}
+              openedEditRoomId={openedEditRoomId}
+              setEditRoomId={setEditRoomId}
+            />
           ))}
         </ul>
       </div>

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import type { SocketMessage } from '../type/SocketMessage';
 
 type Socket = WebSocket | null;

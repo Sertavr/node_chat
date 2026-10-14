@@ -3,7 +3,6 @@ import style from './NoRooms.module.scss';
 
 export const NoRooms = () => {
   return (
-    // eslint-disable-next-line
     <div className={style.noRooms}>
       <div className={style['noRooms__container']}>
         <Icon className={style['noRooms__icon']} nameIcon='chat' />

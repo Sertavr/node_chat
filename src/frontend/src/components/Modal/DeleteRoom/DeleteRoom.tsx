@@ -1,14 +1,13 @@
-// eslint-disable-next-line
 import type React from 'react';
 import { Icon } from '../../Icon/Icon';
 import style from './DeleteRoom.module.scss';
 
 type Props = {
   closeModal: () => void,
-  handleDleteRoom: () => void,
+  handleDeleteRoom: () => void,
 }
 
-export const DeleteRoom: React.FC<Props> = ({closeModal, handleDleteRoom}) => {
+export const DeleteRoom: React.FC<Props> = ({closeModal, handleDeleteRoom}) => {
   return (
     <div className={style.roomDel}>
       <div className={style.roomDel__top}>
@@ -29,7 +28,7 @@ export const DeleteRoom: React.FC<Props> = ({closeModal, handleDleteRoom}) => {
         </button>
         <button
           className={`${style.roomDel__button} ${style['roomDel__button--create']}`}
-          onClick={handleDleteRoom}
+          onClick={handleDeleteRoom}
         >
           Delete
         </button>

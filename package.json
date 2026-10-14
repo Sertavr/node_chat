@@ -11,11 +11,11 @@
     "lint:eslint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "lint": "npm run format && mate-scripts lint",
-    "format": "prettier --ignore-path .prettierignore --write './src/**/*.{js}'",
+    "format": "prettier --ignore-path .prettierignore --write './src/**/*.{js,ts}'",
     "test:only": "mate-scripts test",
     "update": "mate-scripts update",
     "postinstall": "npm run update",
-    "test": "npm run lint && npm run test:only"
+    "test": "npm test --prefix ./src/backend"
   },
   "author": "Mate academy",
   "license": "GPL-3.0",

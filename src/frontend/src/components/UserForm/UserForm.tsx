@@ -19,10 +19,9 @@ export const UserForm = () => {
 
     const timeoutId = setTimeout(() => setError(''), 3000);
 
-    return () => clearInterval(timeoutId);
+    return () => clearTimeout(timeoutId);
   }, [error]);
 
-  // eslint-disable-next-line
   const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -50,10 +49,10 @@ export const UserForm = () => {
 
   return (
     <section className={style['user-form-section']}>
-      <div className="user-form-section__icon-containre">
+      <div>
         <Icon className={style['user-form-section__icon']} nameIcon="chat" />
       </div>
-      <h2 className={style['user-form-section__title']}>Welcom to Chat</h2>
+      <h2 className={style['user-form-section__title']}>Welcome to Chat</h2>
       <p className={style['user-form-section__info']}>
         Enter your name to continue
       </p>
@@ -65,7 +64,7 @@ export const UserForm = () => {
         <input
           type="text"
           className={style['user-form-section__input']}
-          placeholder="Ente yout name"
+          placeholder="Enter yout name"
           id="user-name"
           value={value}
           onChange={(event) => setValue(event.target.value)}

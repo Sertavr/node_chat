@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 import type React from 'react';
 import type { Room } from '../../type/Room';
 import { NoRooms } from '../NoRooms/NoRooms';
@@ -16,10 +15,10 @@ export const ChatMessages: React.FC<Props> = ({ currentRoom }) => {
 
   useEffect(() => {
     listRef.current?.scrollTo({
-    top: listRef.current.scrollHeight,
-    behavior: 'smooth',
-  });
-  });
+      top: listRef.current.scrollHeight,
+      behavior: 'smooth',
+    });
+  }, [currentRoom?.messages]);
 
   if (!currentRoom) {
     return (

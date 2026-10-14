@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import style from './MessageForm.module.scss';
 import { Icon } from '../Icon/Icon';
 import { SocketContext } from '../../context/SocketProvider';
-// eslint-disable-next-line
 import type { Room } from '../../type/Room';
 import { socketService } from '../../services/socetService';
 
@@ -32,9 +31,7 @@ export const MessageForm: React.FC<Props> = ({ currentRoom }) => {
       text: normalizedMessage,
     });
 
-    socket.send(
-      message
-    );
+    socket.send(message);
 
     setInputValue('');
   };
